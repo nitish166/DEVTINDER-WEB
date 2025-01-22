@@ -7,33 +7,29 @@ import { addUser } from "../utils/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
-
 const Body = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate ();
+  const navigate = useNavigate();
   const userData = useSelector((state) => state.user);
 
   const fetchUser = async () => {
-    if(userData) return;
+    if (userData) return;
     try {
       const res = await axios.get(BASE_URL + "/profile/view", {
         withCredentials: true,
       });
       dispatch(addUser(res.data));
     } catch (error) {
-      if(error.status === 401){
-        navigate("/login")
+      if (error.status === 401) {
+        navigate("/login");
       }
       console.log(error);
     }
   };
 
   useEffect(() => {
-    
-      fetchUser();
-   
-   
-  }, [])
+    fetchUser();
+  }, []);
 
   return (
     <div>
