@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const UserCard = ({ user }) => {
     const {firstName, lastName, photoUrl, age, gender, about} = user;
   console.log(user);
@@ -5,7 +7,7 @@ const UserCard = ({ user }) => {
     <div className="card bg-base-300 w-80 shadow-xl">
       <figure>
         <img
-          src={user.photoUrl}
+          src={photoUrl}
           alt="Shoes"
         />
       </figure>
@@ -21,5 +23,16 @@ const UserCard = ({ user }) => {
     </div>
   );
 };
+
+UserCard.propTypes = {
+  user: PropTypes.shape({
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+    photoUrl: PropTypes.string.isRequired,
+    age: PropTypes.number,
+    gender: PropTypes.string,
+    about: PropTypes.string,
+  }).isRequired,
+}
 
 export default UserCard;

@@ -26,7 +26,8 @@
 - if token is not present, redirect user to login page
 - Logout 
 - Error handling in Login page
-- 
+- Get the feed and add the feed in the store
+- build the user card on feed
 
 
 
